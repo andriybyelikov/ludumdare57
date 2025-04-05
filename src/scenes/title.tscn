@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://4picy4dcquoj"]
+
+[node name="Main" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContentLayout" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleContainer" type="Control" parent="UI/MainContentLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TitleLayout" type="VBoxContainer" parent="UI/MainContentLayout/TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="UI/MainContentLayout/TitleContainer/TitleLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Lifted"
+
+[node name="Subtitle" type="Label" parent="UI/MainContentLayout/TitleContainer/TitleLayout"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Ludum Dare 57"
+
+[node name="MenuContainer" type="Control" parent="UI/MainContentLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MenuLayout" type="VBoxContainer" parent="UI/MainContentLayout/MenuContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -68.0
+offset_right = 46.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NewGame" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "New Game"
+flat = true
+
+[node name="Continue" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Continue"
+flat = true
+
+[node name="Options" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Options"
+flat = true
+
+[node name="Quit" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Quit"
+flat = true
+
+[node name="CopyrightMargin" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Copyright" type="Label" parent="UI/CopyrightMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "© 2025 Andriy Byelikov Shvidak"
