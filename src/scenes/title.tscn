@@ -1,4 +1,17 @@
-[gd_scene format=3 uid="uid://4picy4dcquoj"]
+[gd_scene load_steps=3 format=3 uid="uid://4picy4dcquoj"]
+
+[sub_resource type="Gradient" id="Gradient_b5fdr"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ygvpb"]
+gradient = SubResource("Gradient_b5fdr")
+width = 1024
+height = 1024
+use_hdr = true
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node"]
 
@@ -10,81 +23,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainContentLayout" type="VBoxContainer" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="TitleContainer" type="Control" parent="UI/MainContentLayout"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TitleLayout" type="VBoxContainer" parent="UI/MainContentLayout/TitleContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="Title" type="Label" parent="UI/MainContentLayout/TitleContainer/TitleLayout"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Lifted"
-
-[node name="Subtitle" type="Label" parent="UI/MainContentLayout/TitleContainer/TitleLayout"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Ludum Dare 57"
-
-[node name="MenuContainer" type="Control" parent="UI/MainContentLayout"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MenuLayout" type="VBoxContainer" parent="UI/MainContentLayout/MenuContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -68.0
-offset_right = 46.5
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NewGame" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "New Game"
-flat = true
-
-[node name="Continue" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Continue"
-flat = true
-
-[node name="Options" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Options"
-flat = true
-
-[node name="Quit" type="Button" parent="UI/MainContentLayout/MenuContainer/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Quit"
-flat = true
+texture = SubResource("GradientTexture2D_ygvpb")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="CopyrightMargin" type="MarginContainer" parent="UI"]
 layout_mode = 1
@@ -92,7 +49,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -55.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -100,3 +57,84 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 text = "© 2025 Andriy Byelikov Shvidak"
+
+[node name="ContentLayout" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Empty" type="Control" parent="UI/ContentLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MainContentLayout" type="VBoxContainer" parent="UI/ContentLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Control" parent="UI/ContentLayout/MainContentLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Layout" type="VBoxContainer" parent="UI/ContentLayout/MainContentLayout/Title"]
+layout_mode = 2
+offset_left = 68.0
+offset_top = 33.0
+offset_right = 410.0
+offset_bottom = 234.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Title" type="Label" parent="UI/ContentLayout/MainContentLayout/Title/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"TitleLabel"
+text = "Lifted"
+
+[node name="Subtitle" type="Label" parent="UI/ContentLayout/MainContentLayout/Title/Layout"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Ludum Dare 57"
+
+[node name="Menu" type="Control" parent="UI/ContentLayout/MainContentLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Layout" type="VBoxContainer" parent="UI/ContentLayout/MainContentLayout/Menu"]
+layout_mode = 2
+offset_left = 196.0
+offset_top = 66.0
+offset_right = 281.0
+offset_bottom = 202.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NewGame" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "New Game"
+flat = true
+
+[node name="Continue" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Continue"
+flat = true
+
+[node name="Options" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Options"
+flat = true
+
+[node name="Quit" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Quit"
+flat = true
