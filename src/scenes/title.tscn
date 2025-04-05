@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://4picy4dcquoj"]
+[gd_scene load_steps=4 format=3 uid="uid://4picy4dcquoj"]
+
+[ext_resource type="Script" uid="uid://3nk5kr4i5njo" path="res://src/scenes/title.tscn.gd" id="1_ygvpb"]
 
 [sub_resource type="Gradient" id="Gradient_b5fdr"]
 interpolation_mode = 2
@@ -14,6 +16,7 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ygvpb")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -101,6 +104,7 @@ size_flags_horizontal = 8
 text = "Ludum Dare 57"
 
 [node name="Menu" type="Control" parent="UI/ContentLayout/MainContentLayout"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -14,7 +14,13 @@ config/name="ludumdare57"
 run/main_scene="uid://4picy4dcquoj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=400
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneTransition="*res://src/singletons/scene_transition.tscn"
 
 [display]
 
