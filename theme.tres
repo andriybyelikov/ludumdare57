@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://logvtgtkm56j"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://logvtgtkm56j"]
 
 [ext_resource type="FontFile" uid="uid://58x6g171yd" path="res://assets/fonts/UglyQua.ttf" id="1_e1x85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1x85"]
 
 [resource]
 default_font = ExtResource("1_e1x85")
@@ -8,5 +10,7 @@ MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
+NoBackgroundTabContainer/base_type = &"TabContainer"
+NoBackgroundTabContainer/styles/panel = SubResource("StyleBoxEmpty_e1x85")
 TitleLabel/base_type = &"Label"
 TitleLabel/font_sizes/font_size = 128

@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransition="*res://src/singletons/scene_transition.tscn"
+DB="*res://src/singletons/database/db.gd"
+SceneTransition="*res://src/singletons/scene_transition/scene_transition.tscn"
 
 [display]
 

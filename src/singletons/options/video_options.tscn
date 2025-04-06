@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb6cmnxllkx1g"]
+
+[ext_resource type="Script" uid="uid://dly1m3pcrrmge" path="res://src/singletons/options/video_options.tscn.gd" id="1_0ouju"]
+[ext_resource type="Script" uid="uid://b30i7u57sm5pw" path="res://src/custom_nodes/enabled_option_button.gd" id="1_x4s3p"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0ouju")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="GridContainer" parent="UI/Margin"]
+layout_mode = 2
+columns = 2
+
+[node name="ConfigurationLayout" type="GridContainer" parent="UI/Margin/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="FullScreenLabel" type="Label" parent="UI/Margin/Layout/ConfigurationLayout"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Full Screen"
+
+[node name="FullScreen" type="OptionButton" parent="UI/Margin/Layout/ConfigurationLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_x4s3p")
+metadata/_custom_type_script = "uid://b30i7u57sm5pw"
+
+[node name="AspectRatioLabel" type="Label" parent="UI/Margin/Layout/ConfigurationLayout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Aspect Ratio"
+
+[node name="AspectRatio" type="OptionButton" parent="UI/Margin/Layout/ConfigurationLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="UI/Margin/Layout/ConfigurationLayout"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionByAspectRatio" type="TabContainer" parent="UI/Margin/Layout/ConfigurationLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NoBackgroundTabContainer"
+tabs_visible = false
+
+[node name="VerticalSyncLabel" type="Label" parent="UI/Margin/Layout/ConfigurationLayout"]
+layout_mode = 2
+text = "Vertical Sync"
+
+[node name="VerticalSync" type="OptionButton" parent="UI/Margin/Layout/ConfigurationLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_x4s3p")
+metadata/_custom_type_script = "uid://b30i7u57sm5pw"
+
+[node name="Empty" type="Control" parent="UI/Margin/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="value_selected" from="UI/Margin/Layout/ConfigurationLayout/FullScreen" to="." method="_on_full_screen_value_selected"]
+[connection signal="item_selected" from="UI/Margin/Layout/ConfigurationLayout/AspectRatio" to="." method="_on_aspect_ratio_item_selected"]
+[connection signal="value_selected" from="UI/Margin/Layout/ConfigurationLayout/VerticalSync" to="." method="_on_vertical_sync_value_selected"]
