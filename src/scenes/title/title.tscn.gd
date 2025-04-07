@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready() -> void:
+    await UIManager.ui_scale_changed
     await SceneTransition.fade_in()
 
 

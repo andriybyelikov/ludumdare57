@@ -148,24 +148,28 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_type_variation = &"TitleMenuButton"
 text = "New Game"
 flat = true
 
 [node name="Continue" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_type_variation = &"TitleMenuButton"
 text = "Continue"
 flat = true
 
 [node name="Options" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_type_variation = &"TitleMenuButton"
 text = "Options"
 flat = true
 
 [node name="Quit" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_type_variation = &"TitleMenuButton"
 text = "Quit"
 flat = true
 

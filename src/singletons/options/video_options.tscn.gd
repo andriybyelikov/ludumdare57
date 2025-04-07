@@ -41,8 +41,6 @@ func _ready() -> void:
     
     %VerticalSync.value = self.model.vertical_sync
     %VerticalSync.value_selected.emit(self.model.vertical_sync)
-    
-    await SceneTransition.fade_in()
 
 
 func _apply_configuration() -> void:

@@ -1,6 +1,9 @@
 extends Control
 
 
+signal ui_scale_changed
+
+
 const _INITIAL_SCALE: int = 1
 
 
@@ -37,6 +40,8 @@ func _on_root_window_size_changed() -> void:
         self._scale_custom_theme(auto_scale)
         
         $CanvasLayer.visible = false
+        
+    self.ui_scale_changed.emit()
 
 
 func _get_auto_scale() -> int:
