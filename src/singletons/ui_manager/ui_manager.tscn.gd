@@ -40,6 +40,10 @@ func _on_root_window_size_changed() -> void:
         self._scale_custom_theme(auto_scale)
         
         $CanvasLayer.visible = false
+    else:
+        # NOTE:
+        # Another workaround, if this code goes too fast, the title screen never fades in on launch.
+        await self.get_tree().create_timer(1).timeout
         
     self.ui_scale_changed.emit()
 
