@@ -7,3 +7,7 @@ func _ready() -> void:
 
 func _on_options_pressed() -> void:
     Options.show()
+
+
+func _on_quit_pressed() -> void:
+    self.get_tree().quit()

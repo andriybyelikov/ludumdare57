@@ -3,17 +3,12 @@ extends Control
 
 #region Persistent Model
 
-
-var full_screen: bool
-var windowed_resolution_id: int
-var vertical_sync: bool
-
+var model: OptionsModel
 
 #endregion
 
 
 #region Transient Model
-
 
 var full_screen_resolution_id: int
 var resolution_tree: Dictionary[int, Array]
@@ -21,14 +16,11 @@ var resolution_option_buttons: Dictionary[int, OptionButton]
 var aspect_ratio_item_index: Dictionary[int, int]
 var resolution_item_index: Dictionary[int, int]
 
-
 #endregion
 
 
 func _ready() -> void:
-    self.full_screen = false
-    self.windowed_resolution_id = 1
-    self.vertical_sync = true
+    self.model = OptionsPersistence.load()
     
     self.full_screen_resolution_id = 0
     self.resolution_tree = {}
@@ -44,24 +36,24 @@ func _ready() -> void:
     
     self._refresh_resolution_tree()
     
-    %FullScreen.value = self.full_screen
-    %FullScreen.value_selected.emit(self.full_screen)
+    %FullScreen.value = self.model.full_screen
+    %FullScreen.value_selected.emit(self.model.full_screen)
     
-    %VerticalSync.value = self.vertical_sync
-    %VerticalSync.value_selected.emit(self.vertical_sync)
+    %VerticalSync.value = self.model.vertical_sync
+    %VerticalSync.value_selected.emit(self.model.vertical_sync)
     
     await SceneTransition.fade_in()
 
 
 func _apply_configuration() -> void:
     var window_mode: DisplayServer.WindowMode
-    if self.full_screen:
+    if self.model.full_screen:
         window_mode = DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
     else:
         window_mode = DisplayServer.WindowMode.WINDOW_MODE_WINDOWED
     
     var vsync_mode: DisplayServer.VSyncMode
-    if self.vertical_sync:
+    if self.model.vertical_sync:
         vsync_mode = DisplayServer.VSyncMode.VSYNC_ENABLED
     else:
         vsync_mode = DisplayServer.VSyncMode.VSYNC_DISABLED
@@ -70,10 +62,12 @@ func _apply_configuration() -> void:
     DisplayServer.window_set_mode(window_mode)
     
     if window_mode == DisplayServer.WindowMode.WINDOW_MODE_WINDOWED:
-        var resolution: Resolution = DB.table("resolution").find(self.windowed_resolution_id)
+        var resolution: Resolution = DB.table("resolution").find(self.model.windowed_resolution_id)
         self.get_tree().root.size = Vector2i(resolution.width, resolution.height)
     
     DisplayServer.window_set_vsync_mode(vsync_mode)
+    
+    OptionsPersistence.save(self.model)
 
 
 #region Resolution Tree Computation
@@ -207,11 +201,11 @@ func _select_resolution_in_ui(resolution_id: int):
 
 
 func _on_full_screen_value_selected(value: bool) -> void:
-    self.full_screen = value
+    self.model.full_screen = value
     
     var resolution_id: int
     
-    if self.full_screen:
+    if self.model.full_screen:
         var screen_size: Vector2i = DisplayServer.screen_get_size()
         var result: Array[Object] = DB.table("resolution").where(
             func (x: Resolution):
@@ -233,20 +227,20 @@ func _on_full_screen_value_selected(value: bool) -> void:
             DB.table("resolution").delete(self.full_screen_resolution_id)
             self.full_screen_resolution_id = 0
             self._refresh_resolution_tree()
-        resolution_id = self.windowed_resolution_id
+        resolution_id = self.model.windowed_resolution_id
     
     self._select_resolution_in_ui(resolution_id)
     
     var focus_mode: Control.FocusMode
-    if self.full_screen:
+    if self.model.full_screen:
         focus_mode = Control.FocusMode.FOCUS_NONE
     else:
         focus_mode = Control.FocusMode.FOCUS_ALL
     
-    %AspectRatio.disabled = self.full_screen
+    %AspectRatio.disabled = self.model.full_screen
     %AspectRatio.focus_mode = focus_mode
     for option_button: OptionButton in self.resolution_option_buttons.values():
-        option_button.disabled = self.full_screen
+        option_button.disabled = self.model.full_screen
         option_button.focus_mode = focus_mode
     
     self._apply_configuration()
@@ -258,13 +252,13 @@ func _on_aspect_ratio_item_selected(index: int) -> void:
 
 
 func _on_resolution_item_selected(index: int, resolution_option_button: OptionButton) -> void:
-    self.windowed_resolution_id = resolution_option_button.get_item_id(index)
-    self._select_resolution_in_ui(self.windowed_resolution_id)
+    self.model.windowed_resolution_id = resolution_option_button.get_item_id(index)
+    self._select_resolution_in_ui(self.model.windowed_resolution_id)
     self._apply_configuration()
 
 
 func _on_vertical_sync_value_selected(value: bool) -> void:
-    self.vertical_sync = value
+    self.model.vertical_sync = value
     self._apply_configuration()
 
 
