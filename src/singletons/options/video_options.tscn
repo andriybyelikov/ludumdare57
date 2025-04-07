@@ -3,11 +3,17 @@
 [ext_resource type="Script" uid="uid://dly1m3pcrrmge" path="res://src/singletons/options/video_options.tscn.gd" id="1_0ouju"]
 [ext_resource type="Script" uid="uid://b30i7u57sm5pw" path="res://src/custom_nodes/enabled_option_button.gd" id="1_x4s3p"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0ouju")
 
 [node name="UI" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

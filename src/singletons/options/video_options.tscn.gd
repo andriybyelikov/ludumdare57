@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 #region Persistent Model
@@ -26,7 +26,7 @@ var resolution_item_index: Dictionary[int, int]
 
 
 func _ready() -> void:
-    self.full_screen = true
+    self.full_screen = false
     self.windowed_resolution_id = 1
     self.vertical_sync = true
     

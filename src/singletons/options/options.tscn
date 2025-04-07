@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://br17a2f721o6t"]
+[gd_scene load_steps=3 format=3 uid="uid://br17a2f721o6t"]
 
-[node name="Main" type="Node"]
+[ext_resource type="Script" uid="uid://cyur3ub708u4i" path="res://src/singletons/options/options.tscn.gd" id="1_5j6n8"]
+[ext_resource type="PackedScene" uid="uid://bb6cmnxllkx1g" path="res://src/singletons/options/video_options.tscn" id="1_dutqp"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_5j6n8")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -17,3 +21,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
+
+[node name="Video" parent="UI/TabContainer" instance=ExtResource("1_dutqp")]
+layout_mode = 2
+metadata/_tab_index = 0

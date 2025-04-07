@@ -26,7 +26,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="Background" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="TextureRect" type="TextureRect" parent="UI/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +54,15 @@ texture = SubResource("GradientTexture2D_ygvpb")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CopyrightMargin" type="MarginContainer" parent="UI"]
+[node name="Content" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CopyrightMargin" type="MarginContainer" parent="UI/Content"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -56,12 +72,12 @@ offset_top = -55.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Copyright" type="Label" parent="UI/CopyrightMargin"]
+[node name="Copyright" type="Label" parent="UI/Content/CopyrightMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "© 2025 Andriy Byelikov Shvidak"
 
-[node name="ContentLayout" type="HBoxContainer" parent="UI"]
+[node name="ContentLayout" type="HBoxContainer" parent="UI/Content"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,75 +85,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Empty" type="Control" parent="UI/ContentLayout"]
+[node name="Empty" type="Control" parent="UI/Content/ContentLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MainContentLayout" type="VBoxContainer" parent="UI/ContentLayout"]
+[node name="MainContentLayout" type="VBoxContainer" parent="UI/Content/ContentLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Control" parent="UI/ContentLayout/MainContentLayout"]
+[node name="Title" type="Control" parent="UI/Content/ContentLayout/MainContentLayout"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Layout" type="VBoxContainer" parent="UI/ContentLayout/MainContentLayout/Title"]
-layout_mode = 2
-offset_left = 68.0
-offset_top = 33.0
-offset_right = 410.0
-offset_bottom = 234.0
-grow_horizontal = 0
+[node name="Layout" type="VBoxContainer" parent="UI/Content/ContentLayout/MainContentLayout/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -100.5
+offset_right = 171.0
+offset_bottom = 100.5
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Title" type="Label" parent="UI/ContentLayout/MainContentLayout/Title/Layout"]
+[node name="Title" type="Label" parent="UI/Content/ContentLayout/MainContentLayout/Title/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"TitleLabel"
 text = "Lifted"
 
-[node name="Subtitle" type="Label" parent="UI/ContentLayout/MainContentLayout/Title/Layout"]
+[node name="Subtitle" type="Label" parent="UI/Content/ContentLayout/MainContentLayout/Title/Layout"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Ludum Dare 57"
 
-[node name="Menu" type="Control" parent="UI/ContentLayout/MainContentLayout"]
+[node name="Menu" type="Control" parent="UI/Content/ContentLayout/MainContentLayout"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Layout" type="VBoxContainer" parent="UI/ContentLayout/MainContentLayout/Menu"]
-layout_mode = 2
-offset_left = 196.0
-offset_top = 66.0
-offset_right = 281.0
-offset_bottom = 202.0
+[node name="Layout" type="VBoxContainer" parent="UI/Content/ContentLayout/MainContentLayout/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -68.0
+offset_right = 42.5
+offset_bottom = 68.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NewGame" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+[node name="NewGame" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "New Game"
 flat = true
 
-[node name="Continue" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+[node name="Continue" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Continue"
 flat = true
 
-[node name="Options" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+[node name="Options" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Options"
 flat = true
 
-[node name="Quit" type="Button" parent="UI/ContentLayout/MainContentLayout/Menu/Layout"]
+[node name="Quit" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Quit"
 flat = true
+
+[connection signal="pressed" from="UI/Content/ContentLayout/MainContentLayout/Menu/Layout/Options" to="." method="_on_options_pressed"]

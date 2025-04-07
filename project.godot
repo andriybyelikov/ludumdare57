@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 
 DB="*res://src/singletons/database/db.gd"
 SceneTransition="*res://src/singletons/scene_transition/scene_transition.tscn"
+Options="*res://src/singletons/options/options.tscn"
+UIManager="*res://src/singletons/ui_manager/ui_manager.tscn"
 
 [display]
 
