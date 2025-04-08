@@ -27,3 +27,5 @@ current_tab = 0
 [node name="Video" parent="UI/TabContainer" instance=ExtResource("1_dutqp")]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

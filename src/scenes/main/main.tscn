@@ -311,6 +311,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Options" type="Button" parent="SystemMenu/UI/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
@@ -367,37 +368,38 @@ npc_id = 6
 position = Vector2(2200, -8)
 npc_id = 7
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="CharacterSpace"]
+[node name="Player" type="CharacterBody2D" parent="CharacterSpace"]
+unique_name_in_owner = true
 position = Vector2(300, -8)
 script = ExtResource("3_45uaa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSpace/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSpace/Player"]
 shape = SubResource("RectangleShape2D_4rfip")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSpace/CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSpace/Player"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_45uaa")
 animation = &"walking"
 frame_progress = 0.759953
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="CharacterSpace/CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="CharacterSpace/Player"]
 zoom = Vector2(3, 3)
 script = ExtResource("4_vw57g")
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="CharacterSpace/CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="CharacterSpace/Player"]
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSpace/CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSpace/Player/Area2D"]
 shape = SubResource("RectangleShape2D_fub2y")
 metadata/_edit_lock_ = true
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="CharacterSpace/CharacterBody2D"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="CharacterSpace/Player"]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="CharacterSpace/CharacterBody2D/CanvasLayer2"]
+[node name="ColorRect" type="ColorRect" parent="CharacterSpace/Player/CanvasLayer2"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -405,7 +407,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.75)
 
-[node name="LabelEnding" type="Label" parent="CharacterSpace/CharacterBody2D/CanvasLayer2/ColorRect"]
+[node name="LabelEnding" type="Label" parent="CharacterSpace/Player/CanvasLayer2/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
