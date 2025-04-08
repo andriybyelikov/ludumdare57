@@ -8,7 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_qyevy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

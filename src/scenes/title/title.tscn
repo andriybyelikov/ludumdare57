@@ -155,7 +155,9 @@ flat = true
 [node name="Continue" type="Button" parent="UI/Content/ContentLayout/MainContentLayout/Menu/Layout"]
 layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 0
 theme_type_variation = &"TitleMenuButton"
+disabled = true
 text = "Continue"
 flat = true
 

@@ -3,6 +3,10 @@ extends Node
 
 func _ready() -> void:
     await UIManager.ui_scale_changed
+
+
+func _enter_tree() -> void:
+    AudioManager.play_bgm(preload("res://assets/music/Lifted.mp3"))
     await SceneTransition.fade_in()
 
 

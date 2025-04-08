@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtpoy78krfef"]
+
+[ext_resource type="Script" uid="uid://b655fjj308ale" path="res://src/singletons/dialog/dialog.tscn.gd" id="1_4mtoc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mtoc"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_4mtoc")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.3333
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/AspectRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mtoc")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/AspectRatioContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="SizeLabel" type="Label" parent="UI/AspectRatioContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"DialogText"
+text = "
+
+
+"
+
+[node name="ContentLabel" type="Label" parent="UI/AspectRatioContainer/MarginContainer/PanelContainer/MarginContainer/SizeLabel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"DialogText"
+autowrap_mode = 3
+text_overrun_behavior = 1

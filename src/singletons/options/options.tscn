@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6cmnxllkx1g" path="res://src/singletons/options/video_options.tscn" id="1_dutqp"]
 
 [node name="Main" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_5j6n8")
 
 [node name="UI" type="Control" parent="."]

@@ -24,6 +24,8 @@ DB="*res://src/singletons/database/db.gd"
 SceneTransition="*res://src/singletons/scene_transition/scene_transition.tscn"
 Options="*res://src/singletons/options/options.tscn"
 UIManager="*res://src/singletons/ui_manager/ui_manager.tscn"
+DialogManager="*res://src/singletons/dialog/dialog.tscn"
+AudioManager="*res://src/singletons/audio_manager/audio_manager.tscn"
 
 [display]
 
@@ -34,6 +36,24 @@ window/size/resizable=false
 [gui]
 
 theme/custom="uid://logvtgtkm56j"
+
+[input]
+
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194319,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+]
+}
 
 [rendering]
 

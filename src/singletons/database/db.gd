@@ -8,6 +8,8 @@ func _init() -> void:
     self._tables = {}
     self._tables["aspect_ratio"] = DatabaseTable.new()
     self._tables["resolution"] = DatabaseTable.new()
+    self._tables["dialog_text"] = DatabaseTable.new()
+    self._tables["npc_story_dialog"] = DatabaseTable.new()
 
 
 func _ready() -> void:

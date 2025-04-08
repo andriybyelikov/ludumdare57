@@ -7,6 +7,8 @@
 [resource]
 default_font = ExtResource("1_e1x85")
 default_font_size = 16
+DialogText/base_type = &"Label"
+DialogText/font_sizes/font_size = 24
 MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
